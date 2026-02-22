@@ -1,0 +1,1198 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ghanam Gym - عرض رمضان</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --red: #c0111f;
+      --red-dark: #8b0000;
+      --red-deep: #5a0000;
+      --gold: #c9a84c;
+      --gold-lt: #f0d080;
+      --gold-dim: #a07830;
+      --white: #fff;
+      --offwhite: #f5ede0;
+    }
+
+    /*  PAGE  */
+    body {
+      font-family: 'Cairo', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+      background: var(--red-deep);
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, #c0111f88 0%, transparent 65%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40 Z' fill='none' stroke='%23ffffff09' stroke-width='1'/%3E%3Ccircle cx='40' cy='40' r='18' fill='none' stroke='%23ffffff07' stroke-width='1'/%3E%3Cpath d='M40 0 L40 80 M0 40 L80 40' stroke='%23ffffff05' stroke-width='0.5'/%3E%3C/svg%3E");
+      overflow-x: hidden;
+    }
+
+    /*  TOP HANGING ROPE  */
+    .page-lanterns {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 5vw;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /*  MAIN WRAPPER  */
+    .wrapper {
+      width: 100%;
+      max-width: 460px;
+      position: relative;
+      animation: fadeUp .7s cubic-bezier(.22, 1, .36, 1) both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /*  HEADER LOGO AREA  */
+    .site-header {
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .site-header .rope {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 28px;
+      background: linear-gradient(to bottom, #c9a84c, #a07830);
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #8b000088, #c0111f44);
+      border: 1.5px solid #c9a84c66;
+      border-radius: 50px;
+      padding: 10px 22px;
+      margin-top: 28px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 24px #00000055, inset 0 1px 0 #c9a84c33;
+    }
+
+    .logo-text {
+      font-family: 'Amiri', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold-lt);
+      letter-spacing: 1px;
+      text-shadow: 0 1px 6px #0007;
+    }
+
+    /*  RAMADAN BANNER  */
+    .ramadan-banner {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .ramadan-banner .subtitle-ar {
+      font-family: 'Amiri', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--gold-lt);
+      text-shadow: 0 2px 12px #00000099;
+      line-height: 1.2;
+    }
+
+    .ramadan-banner .tag-line {
+      font-size: 13px;
+      color: #ffffff99;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /*  CARD SHELL  */
+    .card {
+      background: linear-gradient(160deg, #c0111f 0%, #8b0000 55%, #6b0000 100%);
+      border-radius: 22px;
+      border: 1.5px solid #c9a84c55;
+      box-shadow: 0 12px 60px #00000088, inset 0 1px 0 #c9a84c44;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-arabesque {
+      position: absolute;
+      inset: 0;
+      opacity: .06;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23fff' stroke-width='.8'/%3E%3Ccircle cx='30' cy='30' r='12' fill='none' stroke='%23fff' stroke-width='.8'/%3E%3Cpath d='M30 0 L30 60 M0 30 L60 30' stroke='%23fff' stroke-width='.4'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 40% at 50% 0%, #ffffff0d 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card-top-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), #fff8dc, var(--gold), transparent);
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+      padding: 36px 32px 32px;
+    }
+
+    /*  FORM SECTION  */
+
+    /* lanterns row inside form card */
+    .form-lanterns {
+      position: absolute;
+      top: -4px;
+      left: 8px;
+      display: flex;
+      gap: 12px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* crescent + star header */
+    .form-moon-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding-top: 64px;
+      margin-bottom: 10px;
+    }
+
+    /* starburst badge (reuse rc-badge style with form- prefix) */
+    .form-badge {
+      position: relative;
+      width: 88px;
+      height: 88px;
+      flex-shrink: 0;
+    }
+
+    .form-badge svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 2px 10px #0009);
+    }
+
+    .form-badge-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .form-badge-pct {
+      font-family: 'Cairo', sans-serif;
+      font-size: 21px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 1px 4px #0009;
+    }
+
+    .form-badge-lbl {
+      font-family: 'Cairo', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffd700;
+      margin-top: -2px;
+    }
+
+    .form-ramadan-txt {
+      font-family: 'Amiri', serif;
+      font-size: 38px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      text-shadow: 0 2px 10px #00000099;
+      text-align: right;
+    }
+
+    /* gold eyebrow divider */
+    .form-divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 14px 0 20px;
+    }
+
+    .form-divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to left, transparent, #c9a84c66);
+    }
+
+    .form-divider-line.r {
+      background: linear-gradient(to right, transparent, #c9a84c66);
+    }
+
+    .form-divider-star {
+      color: var(--gold-lt);
+      font-size: 14px;
+    }
+
+    .form-subtitle {
+      font-size: 13px;
+      color: #ffffffaa;
+      text-align: center;
+      margin-bottom: 22px;
+      line-height: 1.7;
+    }
+
+    /* fields */
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      margin-bottom: 8px;
+      padding-right: 2px;
+    }
+
+    .field input {
+      width: 100%;
+      background: #00000033;
+      border: 1.5px solid #ffffff22;
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: #fff;
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      outline: none;
+      text-align: right;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+
+    .field input::placeholder {
+      color: #ffffff44;
+    }
+
+    .field input:focus {
+      border-color: var(--gold);
+      background: #00000055;
+      box-shadow: 0 0 0 3px #c9a84c22;
+    }
+
+    .field input.valid {
+      border-color: #6dbf8a;
+      box-shadow: 0 0 0 3px #6dbf8a18;
+    }
+
+    .field input.invalid {
+      border-color: #ff6b6b;
+      box-shadow: 0 0 0 3px #ff6b6b18;
+    }
+
+    .error-msg {
+      color: #ffaaaa;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+      padding-right: 2px;
+    }
+
+    .field input.invalid~.error-msg {
+      display: block;
+    }
+
+    /* submit button */
+    .submit-btn {
+      width: 100%;
+      margin-top: 6px;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--gold-lt), var(--gold), var(--gold-dim));
+      color: #3a1a00;
+      font-family: 'Cairo', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      letter-spacing: .5px;
+      transition: opacity .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 20px #c9a84c44;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, #ffffff33, transparent);
+      transform: translateX(-100%);
+      transition: transform .5s;
+    }
+
+    .submit-btn:hover::before {
+      transform: translateX(100%);
+    }
+
+    .submit-btn:hover {
+      opacity: .92;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px #c9a84c55;
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .submit-btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #0004;
+      border-top-color: #3a1a00;
+      border-radius: 50%;
+      animation: spin .6s linear infinite;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /*  DIVIDER  */
+    .card-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9a84c44, transparent);
+      margin: 0 -32px 0;
+    }
+
+    /*  SUCCESS SECTION  */
+    .success {
+      display: none;
+    }
+
+    /* Ramadan card to capture */
+    #ramadanCard {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(160deg, #c0111f 0%, #8b0000 55%, #6b0000 100%);
+      margin-bottom: 0;
+    }
+
+    #ramadanCard .rc-arabesque {
+      position: absolute;
+      inset: 0;
+      opacity: .07;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23fff' stroke-width='.8'/%3E%3Ccircle cx='30' cy='30' r='12' fill='none' stroke='%23fff' stroke-width='.8'/%3E%3Cpath d='M30 0 L30 60 M0 30 L60 30' stroke='%23fff' stroke-width='.4'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #ramadanCard .rc-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 40% at 50% 0%, #ffffff0d 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .rc-lanterns {
+      position: absolute;
+      top: -4px;
+      left: 8px;
+      display: flex;
+      gap: 12px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .rc-body {
+      position: relative;
+      z-index: 1;
+      padding: 22px 20px 16px;
+    }
+
+    .rc-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .rc-title-text {
+      font-family: 'Cairo', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      text-shadow: 0 2px 8px #00000066;
+      padding-top: 56px;
+    }
+
+    .rc-badge {
+      position: relative;
+      width: 92px;
+      height: 92px;
+      flex-shrink: 0;
+    }
+
+    .rc-badge svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 2px 8px #0007);
+    }
+
+    .rc-badge-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .rc-badge-pct {
+      font-family: 'Cairo', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 1px 4px #0007;
+    }
+
+    .rc-badge-lbl {
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffd700;
+      margin-top: -2px;
+    }
+
+    .rc-field-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .rc-field-label {
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-shadow: 0 1px 4px #0005;
+    }
+
+    .rc-field-value {
+      flex: 1;
+      background: #ffffffee;
+      border-radius: 8px;
+      padding: 7px 12px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #222;
+      text-align: right;
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .rc-field-value.code-val {
+      color: #c0111f;
+      font-size: 13px;
+      letter-spacing: 1px;
+      font-weight: 800;
+    }
+
+    .rc-validity {
+      font-family: 'Cairo', sans-serif;
+      font-size: 13px;
+      color: #ffffffcc;
+      text-align: center;
+      margin: 4px 0 10px;
+      font-weight: 600;
+    }
+
+    .rc-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+
+    .rc-ramadan-txt {
+      font-family: 'Amiri', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      text-shadow: 0 2px 10px #00000088;
+    }
+
+    .rc-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid #ffffff22;
+    }
+
+    .rc-hashtag {
+      font-family: 'Cairo', sans-serif;
+      font-size: 11px;
+      color: #ffd700cc;
+      font-weight: 700;
+    }
+
+    .rc-from {
+      font-family: 'Cairo', sans-serif;
+      font-size: 12px;
+      color: #ffffffcc;
+      font-weight: 700;
+    }
+
+    /*  ACTION BUTTONS  */
+    .action-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px 32px 28px;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .action-btns.animate {
+      animation: revealUp .6s cubic-bezier(.22, 1, .36, 1) .9s forwards;
+    }
+
+    @keyframes revealUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn-save {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--gold-lt), var(--gold), var(--gold-dim));
+      color: #3a1a00;
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      transition: opacity .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 18px #c9a84c44;
+    }
+
+    .btn-save:hover {
+      opacity: .9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px #c9a84c55;
+    }
+
+    .btn-save:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-wa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px;
+      background: #25D366;
+      color: #fff;
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      text-decoration: none;
+      transition: opacity .2s, transform .15s;
+      box-shadow: 0 4px 18px #25d36633;
+    }
+
+    .btn-wa:hover {
+      opacity: .9;
+      transform: translateY(-2px);
+    }
+
+    .btn-copy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      background: #ffffff14;
+      color: #fff;
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid #ffffff33;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      transition: background .2s;
+    }
+
+    .btn-copy:hover {
+      background: #ffffff22;
+    }
+
+    .copied-toast {
+      text-align: center;
+      color: var(--gold-lt);
+      font-size: 13px;
+      font-weight: 600;
+      height: 20px;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    /*  FIREWORKS  */
+    #fw-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /*  CARD POP ANIMATION  */
+    #ramadanCard {
+      opacity: 0;
+      transform: scale(.9) translateY(18px);
+    }
+
+    #ramadanCard.animate {
+      animation: popIn .7s cubic-bezier(.22, 1, .36, 1) .2s forwards;
+    }
+
+    @keyframes popIn {
+      0% {
+        opacity: 0;
+        transform: scale(.9) translateY(18px);
+      }
+
+      60% {
+        opacity: 1;
+        transform: scale(1.02) translateY(-3px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="fw-canvas"></canvas>
+
+  <!-- Fixed page lanterns -->
+  <div class="page-lanterns">
+    <svg width="28" height="70" viewBox="0 0 28 70" fill="none">
+      <line x1="14" y1="0" x2="14" y2="10" stroke="#c9a84c" stroke-width="1.2" />
+      <ellipse cx="14" cy="11" rx="4" ry="2.2" fill="#b89030" />
+      <path d="M4 18 Q3 32 4 44 L24 44 Q25 32 24 18 Z" fill="#c9a84c" />
+      <ellipse cx="14" cy="18" rx="10" ry="3" fill="#b89030" />
+      <ellipse cx="14" cy="44" rx="10" ry="3" fill="#b89030" />
+      <line x1="14" y1="47" x2="14" y2="54" stroke="#c9a84c" stroke-width="1.2" />
+      <ellipse cx="14" cy="55" rx="2.5" ry="1.6" fill="#c9a84c" />
+      <ellipse cx="14" cy="30" rx="5" ry="7" fill="#ffd70033" />
+    </svg>
+    <svg width="22" height="56" viewBox="0 0 22 56" fill="none" style="margin-top:14px">
+      <line x1="11" y1="0" x2="11" y2="8" stroke="#c9a84c" stroke-width="1.2" />
+      <ellipse cx="11" cy="9" rx="3" ry="2" fill="#b89030" />
+      <path d="M3 14 Q2 26 3 36 L19 36 Q20 26 19 14 Z" fill="#c9a84c" />
+      <ellipse cx="11" cy="14" rx="8" ry="2.5" fill="#b89030" />
+      <ellipse cx="11" cy="36" rx="8" ry="2.5" fill="#b89030" />
+      <line x1="11" y1="38" x2="11" y2="44" stroke="#c9a84c" stroke-width="1.2" />
+      <ellipse cx="11" cy="45" rx="2" ry="1.4" fill="#c9a84c" />
+      <ellipse cx="11" cy="24" rx="4" ry="5.5" fill="#ffd70022" />
+    </svg>
+    <svg width="28" height="70" viewBox="0 0 28 70" fill="none" style="margin-top:8px">
+      <line x1="14" y1="0" x2="14" y2="10" stroke="#c9a84c" stroke-width="1.2" />
+      <ellipse cx="14" cy="11" rx="4" ry="2.2" fill="#b89030" />
+      <path d="M4 18 Q3 32 4 44 L24 44 Q25 32 24 18 Z" fill="#c9a84c" />
+      <ellipse cx="14" cy="18" rx="10" ry="3" fill="#b89030" />
+      <ellipse cx="14" cy="44" rx="10" ry="3" fill="#b89030" />
+      <line x1="14" y1="47" x2="14" y2="54" stroke="#c9a84c" stroke-width="1.2" />
+      <ellipse cx="14" cy="55" rx="2.5" ry="1.6" fill="#c9a84c" />
+      <ellipse cx="14" cy="30" rx="5" ry="7" fill="#ffd70033" />
+    </svg>
+  </div>
+
+  <div class="wrapper">
+
+    <!-- Header -->
+    <div class="site-header">
+      <div class="rope"></div>
+      <div class="logo-badge">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
+          <rect x="2" y="11" width="4" height="6" rx="2" fill="#c9a84c" />
+          <rect x="22" y="11" width="4" height="6" rx="2" fill="#c9a84c" />
+          <rect x="6" y="8" width="3" height="12" rx="1.5" fill="#c9a84c" />
+          <rect x="19" y="8" width="3" height="12" rx="1.5" fill="#c9a84c" />
+          <rect x="9" y="12" width="10" height="4" rx="2" fill="#f0d080" />
+          <rect x="13" y="5" width="2" height="18" rx="1" fill="#c9a84c44" />
+        </svg>
+        <span class="logo-text">Ghanam Gym</span>
+      </div>
+    </div>
+
+    <!-- Ramadan banner -->
+    <div class="ramadan-banner">
+      <div class="subtitle-ar">رمضان كريم </div>
+      <div class="tag-line">عرض خاص لأبطالنا في شهر الخير</div>
+    </div>
+
+    <!-- Main card -->
+    <div class="card">
+      <div class="card-arabesque"></div>
+      <div class="card-glow"></div>
+      <div class="card-top-line"></div>
+
+      <!--  FORM  -->
+      <div class="card-inner" id="formSection" style="position:relative;padding-top:28px;">
+
+        <!-- Lanterns inside form card -->
+        <div class="form-lanterns">
+          <svg width="34" height="72" viewBox="0 0 34 72" fill="none">
+            <line x1="17" y1="0" x2="17" y2="10" stroke="#c9a84c" stroke-width="1.3" />
+            <ellipse cx="17" cy="11" rx="5" ry="2.6" fill="#b89030" />
+            <path d="M5 19 Q3 37 5 52 L29 52 Q31 37 29 19 Z" fill="#c9a84c" />
+            <path d="M7 22 Q17 27 27 22" stroke="#a07820" stroke-width=".8" fill="none" />
+            <path d="M6 35 Q17 40 28 35" stroke="#a07820" stroke-width=".8" fill="none" />
+            <path d="M6 48 Q17 53 28 48" stroke="#a07820" stroke-width=".8" fill="none" />
+            <ellipse cx="17" cy="19" rx="12" ry="3.5" fill="#b89030" />
+            <ellipse cx="17" cy="52" rx="12" ry="3.5" fill="#b89030" />
+            <line x1="17" y1="55" x2="17" y2="63" stroke="#c9a84c" stroke-width="1.3" />
+            <ellipse cx="17" cy="64" rx="3" ry="1.9" fill="#c9a84c" />
+            <ellipse cx="17" cy="35" rx="6" ry="7.5" fill="#ffd70044" />
+          </svg>
+          <svg width="24" height="56" viewBox="0 0 24 56" fill="none" style="margin-top:16px">
+            <line x1="12" y1="0" x2="12" y2="8" stroke="#c9a84c" stroke-width="1.3" />
+            <ellipse cx="12" cy="9" rx="4" ry="2" fill="#b89030" />
+            <path d="M3 15 Q2 27 3 38 L21 38 Q22 27 21 15 Z" fill="#c9a84c" />
+            <ellipse cx="12" cy="15" rx="9" ry="2.6" fill="#b89030" />
+            <ellipse cx="12" cy="38" rx="9" ry="2.6" fill="#b89030" />
+            <line x1="12" y1="41" x2="12" y2="48" stroke="#c9a84c" stroke-width="1.3" />
+            <ellipse cx="12" cy="49" rx="2.4" ry="1.5" fill="#c9a84c" />
+            <ellipse cx="12" cy="26" rx="4.5" ry="6" fill="#ffd70033" />
+          </svg>
+        </div>
+
+        <!-- Moon + badge header -->
+        <div class="form-moon-header">
+          <div class="form-badge">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M50 2 L57 35 L88 18 L68 45 L98 50 L68 55 L88 82 L57 65 L50 98 L43 65 L12 82 L32 55 L2 50 L32 45 L12 18 L43 35 Z"
+                fill="#8b0000" stroke="#ffd700" stroke-width="2" />
+              <ellipse cx="50" cy="50" rx="32" ry="28" fill="#b01020" opacity=".6" />
+            </svg>
+            <div class="form-badge-text">
+              <div class="form-badge-pct">15%</div>
+              <div class="form-badge-lbl">خصم</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+            <div class="form-ramadan-txt">رمضان<br>كريم</div>
+            <div style="display:flex;align-items:center;gap:5px;">
+              <svg width="22" height="22" viewBox="0 0 30 28" fill="none">
+                <path d="M20 3 Q8 7 8 14 Q8 21 20 24 Q12 20 12 14 Q12 8 20 3Z" fill="#ffd700" />
+              </svg>
+              <svg width="16" height="16" viewBox="0 0 22 22" fill="none">
+                <polygon points="11,2 13.5,8.5 20,8.5 14.8,12.8 16.8,19.5 11,15.5 5.2,19.5 7.2,12.8 2,8.5 8.5,8.5"
+                  fill="#ffd700" />
+              </svg>
+              <svg width="12" height="12" viewBox="0 0 22 22" fill="none">
+                <polygon points="11,2 13.5,8.5 20,8.5 14.8,12.8 16.8,19.5 11,15.5 5.2,19.5 7.2,12.8 2,8.5 8.5,8.5"
+                  fill="#ffd70099" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="form-divider">
+          <div class="form-divider-line r"></div>
+          <span class="form-divider-star">✦ سجّل بياناتك ✦</span>
+          <div class="form-divider-line"></div>
+        </div>
+
+        <div class="form-subtitle">أدخل بياناتك واحصل على كود خصم شخصي فوراً</div>
+
+        <div class="field">
+          <label for="fullName">الاسم الكامل</label>
+          <input type="text" id="fullName" placeholder="محمد أحمد" autocomplete="name" />
+          <div class="error-msg" id="nameError">يرجى إدخال الاسم الكامل (٣ أحرف على الأقل).</div>
+        </div>
+
+        <div class="field">
+          <label for="mobile">رقم الجوال</label>
+          <input type="tel" id="mobile" placeholder="+20 100 000 0000" autocomplete="tel" />
+          <div class="error-msg" id="mobileError">يرجى إدخال رقم جوال صحيح.</div>
+        </div>
+
+        <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+          🎁 احصل على كود الخصم
+        </button>
+
+        <!-- Footer strip -->
+        <div
+          style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:14px;border-top:1px solid #ffffff22;">
+          <div style="font-family:'Cairo',sans-serif;font-size:11px;color:#ffd700cc;font-weight:700;">#رمضان_يجمعنا
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="22" height="20" viewBox="0 0 28 22" fill="none">
+              <rect x="1" y="4" width="12" height="16" rx="2" fill="#e8e0c8" stroke="#c9a84c" stroke-width="1" />
+              <rect x="15" y="4" width="12" height="16" rx="2" fill="#e8e0c8" stroke="#c9a84c" stroke-width="1" />
+              <line x1="14" y1="4" x2="14" y2="20" stroke="#c9a84c" stroke-width="1.5" />
+            </svg>
+            <div style="font-family:'Amiri',serif;font-size:15px;color:#ffffffcc;font-weight:700;">غنام ـ جيم</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!--  SUCCESS  -->
+      <div class="success" id="successSection">
+
+        <!-- Ramadan card to be saved as image -->
+        <div id="ramadanCard">
+          <div class="rc-arabesque"></div>
+          <div class="rc-glow"></div>
+
+          <!-- Lanterns -->
+          <div class="rc-lanterns">
+            <svg width="36" height="76" viewBox="0 0 36 76" fill="none">
+              <line x1="18" y1="0" x2="18" y2="11" stroke="#c9a84c" stroke-width="1.4" />
+              <ellipse cx="18" cy="12" rx="5" ry="2.8" fill="#b89030" />
+              <path d="M6 20 Q4 40 6 56 L30 56 Q32 40 30 20 Z" fill="#c9a84c" />
+              <path d="M8 23 Q18 28 28 23" stroke="#a07820" stroke-width=".9" fill="none" />
+              <path d="M7 37 Q18 42 29 37" stroke="#a07820" stroke-width=".9" fill="none" />
+              <path d="M7 50 Q18 55 29 50" stroke="#a07820" stroke-width=".9" fill="none" />
+              <ellipse cx="18" cy="20" rx="12" ry="3.5" fill="#b89030" />
+              <ellipse cx="18" cy="56" rx="12" ry="3.5" fill="#b89030" />
+              <line x1="18" y1="59" x2="18" y2="67" stroke="#c9a84c" stroke-width="1.4" />
+              <ellipse cx="18" cy="68" rx="3" ry="2" fill="#c9a84c" />
+              <ellipse cx="18" cy="37" rx="6" ry="8" fill="#ffd70044" />
+            </svg>
+            <svg width="26" height="60" viewBox="0 0 26 60" fill="none" style="margin-top:16px">
+              <line x1="13" y1="0" x2="13" y2="9" stroke="#c9a84c" stroke-width="1.4" />
+              <ellipse cx="13" cy="10" rx="4" ry="2.2" fill="#b89030" />
+              <path d="M4 16 Q3 30 4 42 L22 42 Q23 30 22 16 Z" fill="#c9a84c" />
+              <ellipse cx="13" cy="16" rx="9" ry="2.8" fill="#b89030" />
+              <ellipse cx="13" cy="42" rx="9" ry="2.8" fill="#b89030" />
+              <line x1="13" y1="45" x2="13" y2="52" stroke="#c9a84c" stroke-width="1.4" />
+              <ellipse cx="13" cy="53" rx="2.4" ry="1.6" fill="#c9a84c" />
+              <ellipse cx="13" cy="28" rx="5" ry="6.5" fill="#ffd70033" />
+            </svg>
+          </div>
+
+          <div class="rc-body">
+            <div class="rc-top">
+              <div class="rc-badge">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M50 2 L57 35 L88 18 L68 45 L98 50 L68 55 L88 82 L57 65 L50 98 L43 65 L12 82 L32 55 L2 50 L32 45 L12 18 L43 35 Z"
+                    fill="#8b0000" stroke="#ffd700" stroke-width="2" />
+                  <ellipse cx="50" cy="50" rx="32" ry="28" fill="#b01020" opacity=".6" />
+                </svg>
+                <div class="rc-badge-text">
+                  <div class="rc-badge-pct">15%</div>
+                  <div class="rc-badge-lbl">خصم</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rc-field-row">
+              <div class="rc-field-label">مقدم من بطلنا /</div>
+              <div class="rc-field-value" id="rcName"></div>
+            </div>
+
+            <div class="rc-field-row">
+              <div class="rc-field-label">كود الخصم /</div>
+              <div class="rc-field-value code-val" id="rcCode"></div>
+            </div>
+
+            <div class="rc-validity">هذا الكوبون ساري لمدة أسبوع</div>
+            <div class="rc-footer">
+              <div class="rc-hashtag">#رمضان_يجمعنا</div>
+              <div class="rc-from">اهداء من / غنام ـ جيم</div>
+            </div>
+          </div>
+        </div>
+        <!-- end #ramadanCard -->
+
+        <!-- Action buttons -->
+        <div class="action-btns" id="actionBtns">
+          <a id="waBtn" href="#" target="_blank" class="btn-wa">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.118.554 4.107 1.523 5.832L.057 23.535a.75.75 0 0 0 .908.908l5.703-1.466A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.73 9.73 0 0 1-4.953-1.354l-.355-.211-3.688.948.964-3.595-.232-.37A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z" />
+            </svg>
+            أرسل كودك على واتساب
+          </a>
+          <button class="btn-copy" onclick="copyCode()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            نسخ الكود
+          </button>
+          <div class="copied-toast" id="toast"> تم نسخ الكود!</div>
+        </div>
+
+      </div>
+      <!-- end successSection -->
+
+    </div>
+    <!-- end .card -->
+
+    <!-- Footer stars -->
+    <div style="text-align:center;margin-top:18px;color:#c9a84c44;font-size:18px;letter-spacing:8px;"> </div>
+
+  </div>
+  <!-- end .wrapper -->
+
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzmcVPW8OYO1U6zFNqVuw4PksC5Q_kMckEfCf5gujvYPiBLC81MBOJSVzdvuU7yZkGUYQ/exec";
+
+    //  Fireworks 
+    const fwCanvas = document.getElementById("fw-canvas");
+    const fwCtx = fwCanvas.getContext("2d");
+    let particles = [], animFrame;
+
+    function resize() { fwCanvas.width = window.innerWidth; fwCanvas.height = window.innerHeight; }
+    window.addEventListener("resize", resize); resize();
+
+    const FW_COLORS = ["#c9a84c", "#f0d080", "#fff8dc", "#ffd700", "#ffffff", "#ff4444", "#ff8888", "#e8c55a"];
+
+    function rnd(a, b) { return a + Math.random() * (b - a); }
+
+    function spawnBurst(x, y) {
+      const n = Math.floor(rnd(60, 85));
+      for (let i = 0; i < n; i++) {
+        const ang = (Math.PI * 2 * i) / n + rnd(-.15, .15);
+        const spd = rnd(2.5, 9);
+        particles.push({
+          x, y, vx: Math.cos(ang) * spd, vy: Math.sin(ang) * spd,
+          alpha: 1, size: rnd(2.5, 5.5),
+          color: FW_COLORS[Math.floor(Math.random() * FW_COLORS.length)],
+          decay: rnd(.012, .022), gravity: rnd(.08, .18),
+          trail: [], type: Math.random() < .3 ? "star" : "circle"
+        });
+      }
+    }
+
+    function drawStar(cx, cy, r, col, alpha) {
+      fwCtx.save(); fwCtx.globalAlpha = alpha; fwCtx.fillStyle = col; fwCtx.beginPath();
+      for (let i = 0; i < 5; i++) {
+        const ox = cx + r * Math.cos(Math.PI * 2 * i / 5 - Math.PI / 2);
+        const oy = cy + r * Math.sin(Math.PI * 2 * i / 5 - Math.PI / 2);
+        const ix = cx + (r / 2.2) * Math.cos((Math.PI * 2 * i + Math.PI) / 5 - Math.PI / 2);
+        const iy = cy + (r / 2.2) * Math.sin((Math.PI * 2 * i + Math.PI) / 5 - Math.PI / 2);
+        i === 0 ? fwCtx.moveTo(ox, oy) : fwCtx.lineTo(ox, oy);
+        fwCtx.lineTo(ix, iy);
+      }
+      fwCtx.closePath(); fwCtx.fill(); fwCtx.restore();
+    }
+
+    function tick() {
+      fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height);
+      particles = particles.filter(p => p.alpha > .02);
+      for (const p of particles) {
+        p.trail.push({ x: p.x, y: p.y, alpha: p.alpha });
+        if (p.trail.length > 5) p.trail.shift();
+        for (let t = 0; t < p.trail.length; t++) {
+          const tp = p.trail[t];
+          fwCtx.globalAlpha = (tp.alpha * (t / p.trail.length)) * .35;
+          fwCtx.fillStyle = p.color; fwCtx.beginPath();
+          fwCtx.arc(tp.x, tp.y, p.size * .5, 0, Math.PI * 2); fwCtx.fill();
+        }
+        if (p.type === "star") drawStar(p.x, p.y, p.size, p.color, p.alpha);
+        else { fwCtx.globalAlpha = p.alpha; fwCtx.fillStyle = p.color; fwCtx.beginPath(); fwCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2); fwCtx.fill(); }
+        p.x += p.vx; p.y += p.vy; p.vy += p.gravity; p.vx *= .97; p.alpha -= p.decay;
+      }
+      fwCtx.globalAlpha = 1;
+      animFrame = requestAnimationFrame(tick);
+    }
+
+    function launchFireworks() {
+      const w = fwCanvas.width, h = fwCanvas.height;
+      [[w * .25, h * .35], [w * .75, h * .3], [w * .5, h * .2], [w * .15, h * .5], [w * .85, h * .45]].forEach(([x, y], i) => setTimeout(() => spawnBurst(x, y), i * 180));
+      setTimeout(() => { [[w * .4, h * .25], [w * .6, h * .22], [w * .3, h * .4], [w * .7, h * .38]].forEach(([x, y], i) => setTimeout(() => spawnBurst(x, y), i * 150)); }, 900);
+      animFrame = requestAnimationFrame(tick);
+      setTimeout(() => { cancelAnimationFrame(animFrame); fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height); }, 5500);
+    }
+
+    //  Validation 
+    function validateName() {
+      const inp = document.getElementById("fullName"), v = inp.value.trim();
+      if (!v) { inp.classList.remove("valid", "invalid"); return false; }
+      if (v.length >= 3) { inp.classList.add("valid"); inp.classList.remove("invalid"); return true; }
+      inp.classList.add("invalid"); inp.classList.remove("valid"); return false;
+    }
+
+    function validateMobile() {
+      const inp = document.getElementById("mobile"), v = inp.value.trim();
+      const d = v.replace(/\D/g, "");
+      if (!v) { inp.classList.remove("valid", "invalid"); return false; }
+      const mobileRegex = /^(010|012|015)\d{8}$/;
+      if (mobileRegex.test(d)) { inp.classList.add("valid"); inp.classList.remove("invalid"); return true; }
+      inp.classList.add("invalid"); inp.classList.remove("valid"); return false;
+    }
+
+    document.getElementById("fullName").addEventListener("input", validateName);
+    document.getElementById("fullName").addEventListener("blur", validateName);
+    document.getElementById("mobile").addEventListener("input", validateMobile);
+    document.getElementById("mobile").addEventListener("blur", validateMobile);
+
+    //  Submit 
+    async function handleSubmit() {
+      const nameOk = validateName(), mobileOk = validateMobile();
+      if (!nameOk) document.getElementById("fullName").classList.add("invalid");
+      if (!mobileOk) document.getElementById("mobile").classList.add("invalid");
+      if (!nameOk || !mobileOk) return;
+
+      const name = document.getElementById("fullName").value.trim();
+      const mobile = document.getElementById("mobile").value.trim();
+      const btn = document.getElementById("submitBtn");
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> جار التوليد...';
+
+      const firstName = name.split(" ")[0];
+      const now = new Date();
+      const dd = String(now.getDate()).padStart(2, "0");
+      const mm = String(now.getMonth() + 1).padStart(2, "0");
+      const yyyy = now.getFullYear();
+      const promoCode = firstName + "-" + dd + mm + yyyy;
+
+      try {
+        const data = new FormData();
+        data.append("name", name);
+        data.append("mobile", mobile);
+        data.append("promoCode", promoCode);
+        data.append("timestamp", now.toISOString());
+
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body: data
+        });
+      } catch (e) { console.error("Sheets error:", e); }
+
+      document.getElementById("rcName").textContent = name;
+      document.getElementById("rcCode").textContent = promoCode;
+
+      const waTxt = encodeURIComponent("كود الخصم الخاص بي من غنام جيم: " + promoCode);
+      document.getElementById("waBtn").href = "https://wa.me/201014519607?text=" + waTxt;
+
+      document.getElementById("formSection").style.display = "none";
+      document.getElementById("successSection").style.display = "block";
+
+      setTimeout(() => {
+        document.getElementById("ramadanCard").classList.add("animate");
+        document.getElementById("actionBtns").classList.add("animate");
+      }, 50);
+
+      launchFireworks();
+    }
+
+    //  Copy code 
+    function copyCode() {
+      navigator.clipboard.writeText(document.getElementById("rcCode").textContent).then(() => {
+        const t = document.getElementById("toast");
+        t.style.opacity = "1";
+        setTimeout(() => t.style.opacity = "0", 2200);
+      });
+    }
+  </script>
+</body>
+
+</html>
