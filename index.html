@@ -1123,7 +1123,7 @@
       const inp = document.getElementById("mobile"), v = inp.value.trim();
       const d = v.replace(/\D/g, "");
       if (!v) { inp.classList.remove("valid", "invalid"); return false; }
-      const mobileRegex = /^(010|012|015)\d{8}$/;
+      const mobileRegex = /^(010|011|012|015)\d{8}$/;
       if (mobileRegex.test(d)) { inp.classList.add("valid"); inp.classList.remove("invalid"); return true; }
       inp.classList.add("invalid"); inp.classList.remove("valid"); return false;
     }
