@@ -430,64 +430,67 @@
       position: relative;
       border-radius: 14px;
       overflow: hidden;
-      background: linear-gradient(160deg, #c0111f 0%, #8b0000 55%, #6b0000 100%);
+      background-image: url('ramadan-bg.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       margin-bottom: 0;
+      aspect-ratio: 1 / 1;
     }
 
-    #ramadanCard .rc-arabesque {
+    #ramadanCard .rc-overlay {
       position: absolute;
       inset: 0;
-      opacity: .07;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23fff' stroke-width='.8'/%3E%3Ccircle cx='30' cy='30' r='12' fill='none' stroke='%23fff' stroke-width='.8'/%3E%3Cpath d='M30 0 L30 60 M0 30 L60 30' stroke='%23fff' stroke-width='.4'/%3E%3C/svg%3E");
+      background: rgba(0, 0, 0, 0.12);
       pointer-events: none;
       z-index: 0;
-    }
-
-    #ramadanCard .rc-glow {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 70% 40% at 50% 0%, #ffffff0d 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .rc-lanterns {
-      position: absolute;
-      top: -4px;
-      left: 8px;
-      display: flex;
-      gap: 12px;
-      pointer-events: none;
-      z-index: 2;
     }
 
     .rc-body {
       position: relative;
       z-index: 1;
-      padding: 22px 20px 16px;
+      padding: 16px 18px 12px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .rc-top {
       display: flex;
       align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 14px;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-bottom: 8px;
     }
 
-    .rc-title-text {
+    .rc-top-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .rc-discount-label {
       font-family: 'Cairo', sans-serif;
-      font-size: 26px;
+      font-size: 36px;
       font-weight: 900;
       color: #fff;
       line-height: 1;
+      text-shadow: 0 3px 12px #00000088;
+    }
+
+    .rc-card-text {
+      font-family: 'Cairo', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
       text-shadow: 0 2px 8px #00000066;
-      padding-top: 56px;
     }
 
     .rc-badge {
       position: relative;
-      width: 92px;
-      height: 92px;
+      width: 80px;
+      height: 80px;
       flex-shrink: 0;
     }
 
@@ -523,11 +526,19 @@
       margin-top: -2px;
     }
 
+    .rc-middle {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 0;
+      padding: 0 14px;
+    }
+
     .rc-field-row {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 8px;
+      margin-bottom: 4px;
     }
 
     .rc-field-label {
@@ -537,78 +548,67 @@
       color: #fff;
       white-space: nowrap;
       flex-shrink: 0;
-      text-shadow: 0 1px 4px #0005;
+      text-shadow: 0 2px 6px #000000aa;
     }
 
     .rc-field-value {
       flex: 1;
+      max-width: 180px;
       background: #ffffffee;
       border-radius: 8px;
-      padding: 7px 12px;
+      padding: 6px 12px;
       font-family: 'Cairo', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: #222;
       text-align: right;
-      min-height: 38px;
+      min-height: 36px;
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      box-shadow: 0 2px 8px #00000033;
     }
 
     .rc-field-value.code-val {
       color: #c0111f;
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: 1px;
       font-weight: 800;
     }
 
     .rc-validity {
       font-family: 'Cairo', sans-serif;
-      font-size: 13px;
-      color: #ffffffcc;
+      font-size: 11px;
+      color: #ffffffdd;
       text-align: center;
-      margin: 4px 0 10px;
-      font-weight: 600;
-    }
-
-    .rc-bottom {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-top: 4px;
-    }
-
-    .rc-ramadan-txt {
-      font-family: 'Amiri', serif;
-      font-size: 40px;
       font-weight: 700;
-      color: #fff;
-      line-height: 1;
-      text-shadow: 0 2px 10px #00000088;
+      text-shadow: 0 2px 6px #000000aa;
     }
 
     .rc-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 10px;
-      padding-top: 8px;
-      border-top: 1px solid #ffffff22;
+      padding-top: 6px;
+      margin-top: auto;
+      flex-wrap: wrap;
+      gap: 2px;
     }
 
     .rc-hashtag {
       font-family: 'Cairo', sans-serif;
-      font-size: 11px;
-      color: #ffd700cc;
-      font-weight: 700;
+      font-size: 13px;
+      color: #c0111f;
+      font-weight: 800;
+      text-shadow: 0 1px 4px #00000044;
     }
 
     .rc-from {
       font-family: 'Cairo', sans-serif;
-      font-size: 12px;
-      color: #ffffffcc;
+      font-size: 13px;
+      color: #fff;
       font-weight: 700;
+      text-shadow: 0 2px 6px #000000aa;
     }
 
     /*  ACTION BUTTONS  */
@@ -942,37 +942,10 @@
 
         <!-- Ramadan card to be saved as image -->
         <div id="ramadanCard">
-          <div class="rc-arabesque"></div>
-          <div class="rc-glow"></div>
-
-          <!-- Lanterns -->
-          <div class="rc-lanterns">
-            <svg width="36" height="76" viewBox="0 0 36 76" fill="none">
-              <line x1="18" y1="0" x2="18" y2="11" stroke="#c9a84c" stroke-width="1.4" />
-              <ellipse cx="18" cy="12" rx="5" ry="2.8" fill="#b89030" />
-              <path d="M6 20 Q4 40 6 56 L30 56 Q32 40 30 20 Z" fill="#c9a84c" />
-              <path d="M8 23 Q18 28 28 23" stroke="#a07820" stroke-width=".9" fill="none" />
-              <path d="M7 37 Q18 42 29 37" stroke="#a07820" stroke-width=".9" fill="none" />
-              <path d="M7 50 Q18 55 29 50" stroke="#a07820" stroke-width=".9" fill="none" />
-              <ellipse cx="18" cy="20" rx="12" ry="3.5" fill="#b89030" />
-              <ellipse cx="18" cy="56" rx="12" ry="3.5" fill="#b89030" />
-              <line x1="18" y1="59" x2="18" y2="67" stroke="#c9a84c" stroke-width="1.4" />
-              <ellipse cx="18" cy="68" rx="3" ry="2" fill="#c9a84c" />
-              <ellipse cx="18" cy="37" rx="6" ry="8" fill="#ffd70044" />
-            </svg>
-            <svg width="26" height="60" viewBox="0 0 26 60" fill="none" style="margin-top:16px">
-              <line x1="13" y1="0" x2="13" y2="9" stroke="#c9a84c" stroke-width="1.4" />
-              <ellipse cx="13" cy="10" rx="4" ry="2.2" fill="#b89030" />
-              <path d="M4 16 Q3 30 4 42 L22 42 Q23 30 22 16 Z" fill="#c9a84c" />
-              <ellipse cx="13" cy="16" rx="9" ry="2.8" fill="#b89030" />
-              <ellipse cx="13" cy="42" rx="9" ry="2.8" fill="#b89030" />
-              <line x1="13" y1="45" x2="13" y2="52" stroke="#c9a84c" stroke-width="1.4" />
-              <ellipse cx="13" cy="53" rx="2.4" ry="1.6" fill="#c9a84c" />
-              <ellipse cx="13" cy="28" rx="5" ry="6.5" fill="#ffd70033" />
-            </svg>
-          </div>
+          <div class="rc-overlay"></div>
 
           <div class="rc-body">
+            <!-- Top: discount badge + label -->
             <div class="rc-top">
               <div class="rc-badge">
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -988,20 +961,24 @@
               </div>
             </div>
 
-            <div class="rc-field-row">
-              <div class="rc-field-label">مقدم من بطلنا /</div>
-              <div class="rc-field-value" id="rcName"></div>
+            <!-- Middle: fields -->
+            <div class="rc-middle">
+              <div class="rc-field-row">
+                <div class="rc-field-label">مقدم من بطلنا /</div>
+                <div class="rc-field-value" id="rcName"></div>
+              </div>
+
+              <div class="rc-field-row">
+                <div class="rc-field-label">كود الخصم /</div>
+                <div class="rc-field-value code-val" id="rcCode"></div>
+              </div>
             </div>
 
-            <div class="rc-field-row">
-              <div class="rc-field-label">كود الخصم /</div>
-              <div class="rc-field-value code-val" id="rcCode"></div>
-            </div>
-
-            <div class="rc-validity">هذا الكوبون ساري لمدة أسبوع</div>
+            <!-- Bottom: footer -->
             <div class="rc-footer">
-              <div class="rc-hashtag">#رمضان_يجمعنا</div>
               <div class="rc-from">اهداء من / غنام ـ جيم</div>
+              <div class="rc-validity">هذا الكوبون ساري لمدة أسبوع</div>
+              <div class="rc-hashtag">#رمضان_يجمعنا</div>
             </div>
           </div>
         </div>
